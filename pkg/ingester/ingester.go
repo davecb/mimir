@@ -553,6 +553,14 @@ func (i *Ingester) starting(ctx context.Context) (err error) {
 		return errors.Wrap(err, "opening existing TSDBs")
 	}
 
+	for j := 0; j < 5; j++ {
+		limitedErr := i.errorSamplers.maxMetadataPerMetricLimitExceeded.WrapError(
+			newPerMetricMetadataLimitReachedError(100, "foo"),
+		)
+		loggedErr := wrapOrAnnotateWithUser(limitedErr, "12345")
+		level.Error(i.logger).Log("err", loggedErr)
+	}
+
 	if i.ownedSeriesService != nil {
 		// We need to perform the initial computation of owned series after the TSDBs are opened but before the ingester becomes
 		// ACTIVE in the ring and starts to accept requests. However, because the ingester still uses the Lifecycler (rather

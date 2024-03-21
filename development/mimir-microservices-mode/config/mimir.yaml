@@ -17,6 +17,7 @@ ingester_client:
     grpc_compression: gzip
 
 ingester:
+  error_sample_rate: 10
   ring:
     # We want to start immediately.
     final_sleep: 0s

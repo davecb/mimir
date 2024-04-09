@@ -115,8 +115,8 @@ Recording rules allow you to precompute frequently needed or computationally exp
 as a new set of time series. In this section you're going to configure a recording rule in Grafana Mimir using tooling
 offered by Grafana.
 
-1. Open [Grafana Alerting](http://localhost:9000/alerting/list).
-2. Click "New alert rule", which also allows you to configure recording rules.
+1. Open [Grafana Alerting](http://localhost:9000/alerting/list), the alerting-rule page, wich also allows you to configure recording rules.
+2. Click "New recording rule".
 3. Configure the recording rule:
    1. Select `Mimir or Loki recording rule` in the top selector.
    2. Choose `Mimir` in the "Select data source" field.
